@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- boostrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- mis estilos -->
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+
+    <title>Tienda online</title>
+  </head>
+
+  <body>
+    <!-- nav -->
+
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid mx-5">
+        <a class="navbar-brand mx-5" href="../index.html"
+          ><img class="img-logo" src="../img/logo.png" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto px-5">
+            <li class="nav-item">
+              <a class="nav-link px-4 fs-5" aria-current="page" href="../index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-4 fs-5 active" href="../pages/tienda.html">Tienda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-4 fs-5" href="../pages/nosotros.html">Nosotros</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- carrousel main -->
+
+
+
+    <!-- cards tarjetas -->
+    <button class="verCarrito"><img src="../img/carrito.png" class="carritopng" alt=""></button>
+
+    <div class="row gx-0 m-5 contenedorTienda">
+      <div class="card col-10 col-md-3 m-auto p-0">
+        <img src="../img/WhatsApp Image 2022-10-30 at 14.09.15.jpeg" class="card-img-top img-tienda" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">colonia</h5>
+          <p class="card-text">300</p>
+          <button class="btn btn-primary comprar">Agregar al carrito</button>
+          <input class="btn btn-primary col-5" type="number" name="" id="" value="1">
+        </div>
+      </div>
+      <div class="card col-10 col-md-3 m-auto p-0">
+        <img src="../img/WhatsApp Image 2022-10-30 at 14.04.44.jpeg" class="card-img-top img-tienda" alt="..." />
+        <div class="card-body">
+            <h5 class="card-title">Perfume</h5>
+            <p class="card-text">400</p>
+            <button class="btn btn-primary comprar">Agregar al carrito</button>
+            <input class="btn btn-primary col-5" type="number" name="" id="" value="1">
+        </div>
+      </div>
+      <div class="card col-10 col-md-3 m-auto p-0">
+        <img src="../img/WhatsApp Image 2022-10-30 at 14.04.43.jpeg" class="card-img-top img-tienda" alt="..." />
+        <div class="card-body">
+            <h5 class="card-title">pincel</h5>
+            <p class="card-text">200</p>
+            <button class="btn btn-primary comprar">Agregar al carrito</button>
+            <input class="btn btn-primary col-5" type="number" name="" id="" value="1">
+        </div>
+      </div>
+    </div>
+
+
+    <!-- carrito escondido -->
+  <div class="carrito">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"> </th>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Total por cantidad</th>
+          </tr>
+        </thead>
+        <tbody class="agregarAlCarrito">
+          
+        </tbody>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>TOTAL</th>
+          </tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="sumaTotal"></td>
+        </thead>
+      </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- mi javascript -->
+    <script src="../js/main.js"></script>
+    <!-- boostrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
