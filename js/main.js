@@ -4,6 +4,7 @@ const $agregarAlCarrito = document.querySelector(".agregarAlCarrito")
 const $carrito = document.querySelector(".carrito")
 const $contenedor = document.querySelector(".contenedorTienda")
 const $sumaTotal = document.querySelector(".sumaTotal")
+const $quitarCarrito = document.querySelector(".quitarCarrito")
 
 
 const arregloTotal   = []
@@ -13,39 +14,65 @@ const arrayCarrito = [];
 let total = 0;
 
 
-for (boton of $comprar){
+for ( let boton of $comprar){
 
   boton.addEventListener("click", () => {
 
     let productos = {
      precio : parseInt(boton.previousElementSibling.innerHTML),
-     cantidad : boton.nextElementSibling.value,
+     cantidad : parseInt(boton.nextElementSibling.value),
      producto : boton.previousElementSibling.previousElementSibling.innerHTML,
      img : boton.parentElement.previousElementSibling.src
     }
 
-
-    for (let i = 0; i < arrayCarrito.length; i++) {
+        if(chequearProd(productos.producto)){
+          for( let prod of arrayCarrito){
+            if(prod.producto === productos.producto){
+              prod.cantidad += productos.cantidad
+            }
+          }
+        } 
       
-      if(arrayCarrito[i].producto === productos.producto){
-        console.log("no hago nada")
-      }
-      else{
-        arrayCarrito.push(productos)
-      }
-      
-    }
-    
-    console.log(arrayCarrito)
+        else{
+          arrayCarrito.push(productos)
+        }
 
+        console.log(arrayCarrito)
 
   });
 }
 
 
+// chequear que el arreglo contenga lo que queremos agregar al carrito
+function chequearProd(val) {
+  for (let i of arrayCarrito) {
+    if (i.producto == val) {
+      return true;
+    }
+  }
+}
 
 
-// asdajh
+
+// renderizar productos en el dom
+
+
+function renderizar(productos) {
+  
+    let $tr = document.createElement("tr")
+
+      $tr.innerHTML = 
+      `<th scope="row"><img src="${productos.img}" class="img-carrito"></th>
+      <td>${productos.producto}</td>
+      <td>${productos.precio}</td>
+      <td>${productos.cantidad}</td>
+      <td>${productos.cantidad * productos.precio}</td>
+      <td><button class="btn btn-danger borrarElemento">borrar</td>
+      `;
+
+    $agregarAlCarrito.appendChild($tr)
+  
+}
 
 
 
@@ -171,91 +198,66 @@ for (boton of $comprar){
 
 
 
-// $verCarrito.addEventListener("click",()=>{
+$verCarrito.addEventListener("click",()=>{
 
-//     $carrito.classList.toggle("ver-carrito")
+    $carrito.classList.add("ver-carrito")
 
-    
+    $verCarrito.disabled = true
 
-//     let carritoStorage = JSON.parse(localStorage.getItem("carrito"))  
+    arrayCarrito.forEach(el => {
 
-//     carritoStorage.forEach(el => {
+        let $tr = document.createElement("tr")
 
-//       if(el.cantidad > 0){
-//         let $tr = document.createElement("tr")
+        $tr.innerHTML = 
+        `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
+        <td>${el.producto}</td>
+        <td>${el.precio}</td>
+        <td>${el.cantidad}</td>
+        <td>${el.cantidad * el.precio}</td>`
 
-//         $tr.innerHTML = 
-//         `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
-//         <td>${el.producto}</td>
-//         <td>${el.precio}</td>
-//         <td>${el.cantidad}</td>
-//         <td>${el.cantidad * el.precio}</td>`
-
-//       $agregarAlCarrito.appendChild($tr)
+      $agregarAlCarrito.appendChild($tr)
 
       
-//        const sumaTotal = el.precio * el.cantidad
-//        arregloTotal.push(sumaTotal) }
-//     });
-//     arregloTotal.forEach(element => {
-//     total = total + element;
-//     });
-//     $sumaTotal.innerHTML = total
-//      total = 0;
-    
-
-//   //    setTimeout(function(){
-//   //     $agregarAlCarrito.removeChild("all")
-//   // }, 2000);
-//      //$agregarAlCarrito.removeAttributeNode("all")
-
-
-
-
-//     // carrito.forEach(el => {
-
-//     //   if(el.cantidad > 0){
-//     //     let $tr = document.createElement("tr")
-
-//     //     $tr.innerHTML = 
-//     //     `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
-//     //     <td>${el.producto}</td>
-//     //     <td>${el.precio}</td>
-//     //     <td>${el.cantidad}</td>
-//     //     <td>${el.cantidad * el.precio}</td>`
-
-//     //   $agregarAlCarrito.appendChild($tr)
-
-      
-//     //    const sumaTotal = el.precio * el.cantidad
-//     //    arregloTotal.push(sumaTotal) }
-//     // });
-//     // arregloTotal.forEach(element => {
-//     // total = total + element;
-//     // });
-//     // $sumaTotal.innerHTML = total
+       const sumaTotal = el.precio * el.cantidad
+       arregloTotal.push(sumaTotal) 
+    });
+    arregloTotal.forEach(element => {
+    total = total + element;
+    });
+    $sumaTotal.innerHTML = total
+     total = 0;
   
+});
+
+
+$quitarCarrito.addEventListener("click", ()=>{
+  $carrito.classList.remove("ver-carrito")
+
+  $agregarAlCarrito.innerHTML = ""
+
+  $verCarrito.disabled = false
+})
+
+
+
+// document.addEventListener("DOMContentLoaded", ()=>{
+//   console.log("hola")
+//   let $fragment = document.createDocumentFragment();
+//   $contenedor.appendChild($fragment)
+//   productosAVender.forEach(element => {
+//     console.log("hola2")
+//     let insertar = `<div class="card col-10 col-md-3 m-auto p-0">
+//     <img src="${element.img}" alt="..." />
+//     <div class="card-body">
+//       <h5 class="card-title">${element.producto}</h5>
+//       <p class="card-text">${element.precio}</p>
+//       <button class="btn btn-primary comprar">Agregar al carrito</button>
+//     </div>
+//   </div>`;
+//   $fragment.innerHTML = insertar
+//   $contenedor.appendChild($fragment)
+  
+//   });
+
 // })
-
-
-// // document.addEventListener("DOMContentLoaded", ()=>{
-// //   console.log("hola")
-// //   let $fragment = document.createDocumentFragment();
-// //   $contenedor.appendChild($fragment)
-// //   productosAVender.forEach(element => {
-// //     console.log("hola2")
-// //     let insertar = `<div class="card col-10 col-md-3 m-auto p-0">
-// //     <img src="${element.img}" alt="..." />
-// //     <div class="card-body">
-// //       <h5 class="card-title">${element.producto}</h5>
-// //       <p class="card-text">${element.precio}</p>
-// //       <button class="btn btn-primary comprar">Agregar al carrito</button>
-// //     </div>
-// //   </div>`;
-// //   $fragment.innerHTML = insertar
-// //   $contenedor.appendChild($fragment)
-  
-// //   });
-
-// // })
 
