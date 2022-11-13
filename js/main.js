@@ -38,6 +38,7 @@ for ( let boton of $comprar){
         else{
           arrayCarrito.push(productos)
         }
+        localStorage.setItem("carrito", JSON.stringify(arrayCarrito))
 
         console.log(arrayCarrito)
 
@@ -56,36 +57,18 @@ function chequearProd(val) {
 
 
 
-// renderizar productos en el dom
-
-
-function renderizar(productos) {
-  
-    let $tr = document.createElement("tr")
-
-      $tr.innerHTML = 
-      `<th scope="row"><img src="${productos.img}" class="img-carrito"></th>
-      <td>${productos.producto}</td>
-      <td>${productos.precio}</td>
-      <td>${productos.cantidad}</td>
-      <td>${productos.cantidad * productos.precio}</td>
-      <td><button class="btn btn-danger borrarElemento">borrar</td>
-      `;
-
-    $agregarAlCarrito.appendChild($tr)
-  
-}
-
 
 // mostrar el carrito y renderizar los elementos
 
 $verCarrito.addEventListener("click",()=>{
 
+    let carritoJSON = JSON.parse(localStorage.getItem("carrito"))
+
     $carrito.classList.add("ver-carrito")
 
     $verCarrito.disabled = true
 
-    arrayCarrito.forEach(el => {
+    carritoJSON.forEach(el => {
 
         let $tr = document.createElement("tr")
 
@@ -100,27 +83,43 @@ $verCarrito.addEventListener("click",()=>{
 
       $agregarAlCarrito.appendChild($tr)
 
-      
-       const sumaTotal = el.precio * el.cantidad
-       arregloTotal.push(sumaTotal) 
-    });
-
-    arregloTotal.forEach(element => {
-
-    total = total + element;
-
-    });
-
-    $sumaTotal.innerHTML = total
-
-
-
-    borrarProductos()
     
+    });
 
+    sumarProductos();
 
-  
+    borrarProductos();
+    
+  arregloTotal.length = 0;
 });
+
+
+//funcion para sumar el precio de cada producto y agregarlo al arreglo
+
+function sumarProductos(){
+
+  let carritoJSON = JSON.parse(localStorage.getItem("carrito"))
+
+  carritoJSON.forEach(el => {
+
+    const sumaTotal = el.precio * el.cantidad
+
+    arregloTotal.push(sumaTotal) 
+    
+  });
+
+  arregloTotal.forEach(el => {
+
+    total = total + el;
+
+  })
+
+  $sumaTotal.innerHTML = total
+
+  arregloTotal.length = 0;
+  
+  total = 0;
+}
 
 
 // quitar el carrito y vaciar el innerhtml, reiniciar el arreglototal, el total y reactivar el boton de vercarrito
@@ -144,6 +143,7 @@ $quitarCarrito.addEventListener("click", ()=>{
 
 function borrarProductos() {
 
+
   const $borrarElemento = document.querySelectorAll(".borrarElemento")
 
     for (const borrar of $borrarElemento) {
@@ -153,11 +153,18 @@ function borrarProductos() {
         const prodEliminar = e.target.parentNode.parentNode.children[1].innerHTML
 
        for (let i = 0; i < arrayCarrito.length; i++) {
-        if(arrayCarrito[i].producto === prodEliminar){
+
+        let carritoJSON = JSON.parse(localStorage.getItem("carrito")) 
+
+        if(carritoJSON[i].producto === prodEliminar){
 
           arrayCarrito.splice(i,1)
 
+          localStorage.setItem("carrito", JSON.stringify(arrayCarrito))
+
           e.target.parentNode.parentNode.remove()
+
+          sumarProductos()
 
           console.log(arrayCarrito)
         }
