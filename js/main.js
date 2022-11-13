@@ -8,29 +8,39 @@ const $sumaTotal = document.querySelector(".sumaTotal")
 
 const arregloTotal   = []
 
-const productosTienda = [];
+const arrayCarrito = [];
 
 let total = 0;
 
 
+for (boton of $comprar){
 
-//cuando el dom carga se agregan todos los productos al carrito y se envian al localstorage
-
-document.addEventListener("DOMContentLoaded", () => {
-    for (const boton of $comprar) {
+  boton.addEventListener("click", () => {
 
     let productos = {
      precio : parseInt(boton.previousElementSibling.innerHTML),
-     cantidad : 0 , //boton.nextElementSibling.value,
+     cantidad : boton.nextElementSibling.value,
      producto : boton.previousElementSibling.previousElementSibling.innerHTML,
      img : boton.parentElement.previousElementSibling.src
     }
 
-    productosTienda.push(productos)
 
-    //localStorage.setItem("carrito" , JSON.stringify(productosTienda))
+    for (let i = 0; i < arrayCarrito.length; i++) {
+      
+      if(arrayCarrito[i].producto === productos.producto){
+        console.log("no hago nada")
+      }
+      else{
+        arrayCarrito.push(productos)
+      }
+      
+    }
+    
+    console.log(arrayCarrito)
 
 
+  });
+}
 
 
 
@@ -73,65 +83,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     //localStorage.setItem("carrito" , JSON.stringify(productosTienda))
-  }});
 
 
 
 
 
-//cuando se clickea agregar al carrito se evalua si el valor es mayor a uno y se cambia el valor del carrito, si el valor es mayor
-// es mayor a 0 se renderiza en pantalla y se muestra
+
+// //cuando se clickea agregar al carrito se evalua si el valor es mayor a uno y se cambia el valor del carrito, si el valor es mayor
+// // es mayor a 0 se renderiza en pantalla y se muestra
 
 
-  for (const boton of $comprar) {
-    boton.addEventListener("click", (e) => {
-      let agregar  = boton.previousElementSibling.previousElementSibling.innerHTML;
-      let cantidadAAgregar = boton.nextElementSibling.value;
+//   for (const boton of $comprar) {
+//     boton.addEventListener("click", (e) => {
+//       let agregar  = boton.previousElementSibling.previousElementSibling.innerHTML;
+//       let cantidadAAgregar = boton.nextElementSibling.value;
 
 
-      //let carritoStorage = JSON.parse(localStorage.getItem("carrito"))  
+//       //let carritoStorage = JSON.parse(localStorage.getItem("carrito"))  
       
 
-      for (let i in productosTienda) {
+//       for (let i in productosTienda) {
       
-         if (productosTienda[i].producto == agregar) {
+//          if (productosTienda[i].producto == agregar) {
 
-          productosTienda[i].cantidad = cantidadAAgregar
-          }
-      }
+//           productosTienda[i].cantidad = cantidadAAgregar
+//           }
+//       }
 
-      localStorage.setItem("carrito" , JSON.stringify(productosTienda))
+//       localStorage.setItem("carrito" , JSON.stringify(productosTienda))
 
-      //let carritoStorage = JSON.parse(localStorage.getItem("carrito"))
+//       //let carritoStorage = JSON.parse(localStorage.getItem("carrito"))
 
-      // $agregarAlCarrito.removeAttributeNode("all")
+//       // $agregarAlCarrito.removeAttributeNode("all")
 
-      // carritoStorage.forEach(el => {
+//       // carritoStorage.forEach(el => {
 
-      //   if(el.cantidad > 0){
-      //     let $tr = document.createElement("tr")
+//       //   if(el.cantidad > 0){
+//       //     let $tr = document.createElement("tr")
   
-      //     $tr.innerHTML = 
-      //     `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
-      //     <td>${el.producto}</td>
-      //     <td>${el.precio}</td>
-      //     <td>${el.cantidad}</td>
-      //     <td>${el.cantidad * el.precio}</td>`
+//       //     $tr.innerHTML = 
+//       //     `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
+//       //     <td>${el.producto}</td>
+//       //     <td>${el.precio}</td>
+//       //     <td>${el.cantidad}</td>
+//       //     <td>${el.cantidad * el.precio}</td>`
   
-      //   $agregarAlCarrito.appendChild($tr)
+//       //   $agregarAlCarrito.appendChild($tr)
   
         
-      //    const sumaTotal = el.precio * el.cantidad
-      //    arregloTotal.push(sumaTotal) }
-      // });
-      // arregloTotal.forEach(element => {
-      // total = total + element;
-      // });
-      // $sumaTotal.innerHTML = total
-      //  total = 0;
-      // console.log(carritoStorage)
-    })
-  };
+//       //    const sumaTotal = el.precio * el.cantidad
+//       //    arregloTotal.push(sumaTotal) }
+//       // });
+//       // arregloTotal.forEach(element => {
+//       // total = total + element;
+//       // });
+//       // $sumaTotal.innerHTML = total
+//       //  total = 0;
+//       // console.log(carritoStorage)
+//     })
+//   };
 
 
 
@@ -161,91 +171,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-$verCarrito.addEventListener("click",()=>{
+// $verCarrito.addEventListener("click",()=>{
 
-    $carrito.classList.toggle("ver-carrito")
+//     $carrito.classList.toggle("ver-carrito")
 
     
 
-    let carritoStorage = JSON.parse(localStorage.getItem("carrito"))  
+//     let carritoStorage = JSON.parse(localStorage.getItem("carrito"))  
 
-    carritoStorage.forEach(el => {
+//     carritoStorage.forEach(el => {
 
-      if(el.cantidad > 0){
-        let $tr = document.createElement("tr")
+//       if(el.cantidad > 0){
+//         let $tr = document.createElement("tr")
 
-        $tr.innerHTML = 
-        `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
-        <td>${el.producto}</td>
-        <td>${el.precio}</td>
-        <td>${el.cantidad}</td>
-        <td>${el.cantidad * el.precio}</td>`
+//         $tr.innerHTML = 
+//         `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
+//         <td>${el.producto}</td>
+//         <td>${el.precio}</td>
+//         <td>${el.cantidad}</td>
+//         <td>${el.cantidad * el.precio}</td>`
 
-      $agregarAlCarrito.appendChild($tr)
+//       $agregarAlCarrito.appendChild($tr)
 
       
-       const sumaTotal = el.precio * el.cantidad
-       arregloTotal.push(sumaTotal) }
-    });
-    arregloTotal.forEach(element => {
-    total = total + element;
-    });
-    $sumaTotal.innerHTML = total
-     total = 0;
+//        const sumaTotal = el.precio * el.cantidad
+//        arregloTotal.push(sumaTotal) }
+//     });
+//     arregloTotal.forEach(element => {
+//     total = total + element;
+//     });
+//     $sumaTotal.innerHTML = total
+//      total = 0;
     
 
-  //    setTimeout(function(){
-  //     $agregarAlCarrito.removeChild("all")
-  // }, 2000);
-     //$agregarAlCarrito.removeAttributeNode("all")
+//   //    setTimeout(function(){
+//   //     $agregarAlCarrito.removeChild("all")
+//   // }, 2000);
+//      //$agregarAlCarrito.removeAttributeNode("all")
 
 
 
 
-    // carrito.forEach(el => {
+//     // carrito.forEach(el => {
 
-    //   if(el.cantidad > 0){
-    //     let $tr = document.createElement("tr")
+//     //   if(el.cantidad > 0){
+//     //     let $tr = document.createElement("tr")
 
-    //     $tr.innerHTML = 
-    //     `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
-    //     <td>${el.producto}</td>
-    //     <td>${el.precio}</td>
-    //     <td>${el.cantidad}</td>
-    //     <td>${el.cantidad * el.precio}</td>`
+//     //     $tr.innerHTML = 
+//     //     `<th scope="row"><img src="${el.img}" class="img-carrito"></th>
+//     //     <td>${el.producto}</td>
+//     //     <td>${el.precio}</td>
+//     //     <td>${el.cantidad}</td>
+//     //     <td>${el.cantidad * el.precio}</td>`
 
-    //   $agregarAlCarrito.appendChild($tr)
+//     //   $agregarAlCarrito.appendChild($tr)
 
       
-    //    const sumaTotal = el.precio * el.cantidad
-    //    arregloTotal.push(sumaTotal) }
-    // });
-    // arregloTotal.forEach(element => {
-    // total = total + element;
-    // });
-    // $sumaTotal.innerHTML = total
+//     //    const sumaTotal = el.precio * el.cantidad
+//     //    arregloTotal.push(sumaTotal) }
+//     // });
+//     // arregloTotal.forEach(element => {
+//     // total = total + element;
+//     // });
+//     // $sumaTotal.innerHTML = total
   
-})
-
-
-// document.addEventListener("DOMContentLoaded", ()=>{
-//   console.log("hola")
-//   let $fragment = document.createDocumentFragment();
-//   $contenedor.appendChild($fragment)
-//   productosAVender.forEach(element => {
-//     console.log("hola2")
-//     let insertar = `<div class="card col-10 col-md-3 m-auto p-0">
-//     <img src="${element.img}" alt="..." />
-//     <div class="card-body">
-//       <h5 class="card-title">${element.producto}</h5>
-//       <p class="card-text">${element.precio}</p>
-//       <button class="btn btn-primary comprar">Agregar al carrito</button>
-//     </div>
-//   </div>`;
-//   $fragment.innerHTML = insertar
-//   $contenedor.appendChild($fragment)
-  
-//   });
-
 // })
+
+
+// // document.addEventListener("DOMContentLoaded", ()=>{
+// //   console.log("hola")
+// //   let $fragment = document.createDocumentFragment();
+// //   $contenedor.appendChild($fragment)
+// //   productosAVender.forEach(element => {
+// //     console.log("hola2")
+// //     let insertar = `<div class="card col-10 col-md-3 m-auto p-0">
+// //     <img src="${element.img}" alt="..." />
+// //     <div class="card-body">
+// //       <h5 class="card-title">${element.producto}</h5>
+// //       <p class="card-text">${element.precio}</p>
+// //       <button class="btn btn-primary comprar">Agregar al carrito</button>
+// //     </div>
+// //   </div>`;
+// //   $fragment.innerHTML = insertar
+// //   $contenedor.appendChild($fragment)
+  
+// //   });
+
+// // })
 
