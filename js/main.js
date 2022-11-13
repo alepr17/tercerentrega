@@ -11,7 +11,7 @@ const $quitarCarrito = document.querySelector(".quitarCarrito")
 
 const arregloTotal   = []
 
-const arrayCarrito = [];
+const arrayCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 let total = 0;
 
@@ -145,16 +145,20 @@ function borrarProductos() {
 
 
   const $borrarElemento = document.querySelectorAll(".borrarElemento")
-
-    for (const borrar of $borrarElemento) {
+    
+  
+  
+  for (const borrar of $borrarElemento) {
 
       borrar.addEventListener("click", (e)=>{
 
+        let carritoJSON = JSON.parse(localStorage.getItem("carrito")) 
+
         const prodEliminar = e.target.parentNode.parentNode.children[1].innerHTML
 
-       for (let i = 0; i < arrayCarrito.length; i++) {
+        
 
-        let carritoJSON = JSON.parse(localStorage.getItem("carrito")) 
+       for (let i = 0; i < carritoJSON.length; i++) {
 
         if(carritoJSON[i].producto === prodEliminar){
 
