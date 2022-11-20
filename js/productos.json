@@ -1,0 +1,82 @@
+[
+  {
+    "producto": "perfume",
+    "precio": 300,
+    "img": "../img/prod1.jpeg"
+  },
+  {
+    "producto": "losion",
+    "precio": 400,
+    "img": "../img/prod2.jpeg"
+  },
+  {
+    "producto": "crema",
+    "precio": 900,
+    "img": "../img/prod3.jpeg"
+  },
+  {
+    "producto": "rimel",
+    "precio": 3900,
+    "img": "../img/prod4.jpeg"
+  },
+  {
+    "producto": "maquillaje",
+    "precio": 600,
+    "img": "../img/prod5.jpeg"
+  },
+  {
+    "producto": "agua",
+    "precio": 9500,
+    "img": "../img/prod6.jpeg"
+  },
+  {
+    "producto": "esfoleante",
+    "precio": 800,
+    "img": "../img/prod7.jpeg"
+  },
+  {
+    "producto": "mascara",
+    "precio": 9600,
+    "img": "../img/prod8.jpeg"
+  },
+  {
+    "producto": "mascara nivea",
+    "precio": 500,
+    "img": "../img/prod9.jpeg"
+  },
+  {
+    "producto": "portalapiz",
+    "precio": 2300,
+    "img": "../img/prod10.jpeg"
+  },
+  {
+    "producto": "perfume nivea",
+    "precio": 230,
+    "img": "../img/prod11.jpeg"
+  },
+  {
+    "producto": "labial",
+    "precio": 700,
+    "img": "../img/prod12.jpeg"
+  },
+  {
+    "producto": "Pincel",
+    "precio": 600,
+    "img": "../img/prod13.jpeg"
+  },
+  {
+    "producto": "lossh",
+    "precio": 200,
+    "img": "../img/prod14.jpeg"
+  },
+  {
+    "producto": "maquillaje nivea",
+    "precio": 400,
+    "img": "../img/prod15.jpeg"
+  },
+  {
+    "producto": "labial nivea",
+    "precio": 300,
+    "img": "../img/prod16.jpeg"
+  }
+]

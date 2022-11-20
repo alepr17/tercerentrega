@@ -14,8 +14,14 @@
     <!-- mis estilos -->
     <link rel="stylesheet" href="../css/style.css" />
 
+    <!-- animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- tostify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- favicon -->
-    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
 
     <title>Tienda online</title>
   </head>
@@ -42,15 +48,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto px-5">
             <li class="nav-item">
-              <a class="nav-link px-4 fs-5" aria-current="page" href="../index.html">Inicio</a>
+              <a
+                class="nav-link px-4 fs-5"
+                aria-current="page"
+                href="../index.html"
+                >Inicio</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link px-4 fs-5 active" href="../pages/tienda.html">Tienda</a>
+              <a class="nav-link px-4 fs-5 active" href="../pages/tienda.html"
+                >Tienda</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link px-4 fs-5" href="../pages/nosotros.html">Nosotros</a>
+              <a class="nav-link px-4 fs-5" href="../pages/nosotros.html"
+                >Nosotros</a
+              >
             </li>
-            
           </ul>
         </div>
       </div>
@@ -58,14 +72,14 @@
 
     <!-- carrousel main -->
 
-
-
     <!-- cards tarjetas -->
-    <button class="verCarrito"><img src="../img/carrito.png" class="carritopng" alt=""></button>
+    <button class="verCarrito">
+      <img src="../img/carrito.png" class="carritopng" alt="" />
+    </button>
 
     <div class="row gx-0 m-5 contenedorTienda">
-      <div class="card col-10 col-md-3 m-auto p-0">
-        <img src="../img/WhatsApp Image 2022-10-30 at 14.09.15.jpeg" class="card-img-top img-tienda" alt="..." />
+      <!-- <div class="card col-10 col-md-3 m-auto p-0">
+        <img src="../img/prod1.jpeg" class="card-img-top img-tienda" alt="..." />
         <div class="card-body">
           <h5 class="card-title">colonia</h5>
           <p class="card-text">300</p>
@@ -74,7 +88,7 @@
         </div>
       </div>
       <div class="card col-10 col-md-3 m-auto p-0">
-        <img src="../img/WhatsApp Image 2022-10-30 at 14.04.44.jpeg" class="card-img-top img-tienda" alt="..." />
+        <img src="../img/prod2.jpeg" class="card-img-top img-tienda" alt="..." />
         <div class="card-body">
             <h5 class="card-title">Perfume</h5>
             <p class="card-text">400</p>
@@ -83,33 +97,32 @@
         </div>
       </div>
       <div class="card col-10 col-md-3 m-auto p-0">
-        <img src="../img/WhatsApp Image 2022-10-30 at 14.04.43.jpeg" class="card-img-top img-tienda" alt="..." />
+        <img src="../img/prod3.jpeg" class="card-img-top img-tienda" alt="..." />
         <div class="card-body">
             <h5 class="card-title">pincel</h5>
             <p class="card-text">200</p>
             <button class="btn btn-primary comprar">Agregar al carrito</button>
             <input class="btn btn-primary col-5" type="number" name="" id="" value="1">
         </div>
-      </div>
+      </div> -->
     </div>
 
-
     <!-- carrito escondido -->
-  <div class="carrito">
-    <table class="table">
+    <div class="carrito" >
+      <table class="table">
         <thead>
           <tr>
-            <th scope="col"> </th>
+            <th scope="col"></th>
             <th scope="col">Producto</th>
             <th scope="col">Precio</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Total por cantidad</th>
-            <th scope="col"><button class="btn btn-danger quitarCarrito">X</button></th>
+            <th scope="col">
+              <button class="btn btn-danger quitarCarrito">X</button>
+            </th>
           </tr>
         </thead>
-        <tbody class="agregarAlCarrito">
-          
-        </tbody>
+        <tbody class="agregarAlCarrito"></tbody>
         <thead>
           <tr>
             <th></th>
@@ -125,28 +138,9 @@
           <td class="sumaTotal"></td>
         </thead>
       </table>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
+    <!-- animaciones -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- mi javascript -->
     <script src="../js/main.js"></script>
     <!-- boostrap -->
